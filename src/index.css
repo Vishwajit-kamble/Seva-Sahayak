@@ -1,0 +1,276 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap');
+
+@layer base {
+  :root {
+    /* Indian Government Theme - Warm & Accessible */
+    --background: 40 33% 98%;
+    --foreground: 20 14% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 20 14% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14% 15%;
+
+    /* Saffron/Orange - Primary Government Color */
+    --primary: 24 95% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Warm secondary tones */
+    --secondary: 40 30% 94%;
+    --secondary-foreground: 20 14% 25%;
+
+    --muted: 40 20% 92%;
+    --muted-foreground: 20 10% 45%;
+
+    --accent: 142 76% 36%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 20% 88%;
+    --input: 30 20% 88%;
+    --ring: 24 95% 53%;
+
+    --radius: 0.75rem;
+
+    /* Custom semantic tokens */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 20 14% 15%;
+    --info: 210 79% 46%;
+    --info-foreground: 0 0% 100%;
+
+    /* Confidence colors */
+    --confidence-high: 142 76% 36%;
+    --confidence-medium: 38 92% 50%;
+    --confidence-low: 0 84% 60%;
+
+    /* Step indicator */
+    --step-active: 24 95% 53%;
+    --step-complete: 142 76% 36%;
+    --step-inactive: 30 20% 80%;
+
+    /* Gradient tokens */
+    --gradient-hero: linear-gradient(135deg, hsl(24 95% 53%) 0%, hsl(35 95% 55%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(40 33% 98%) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%) 0%, hsl(142 70% 45%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(20 14% 15% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(20 14% 15% / 0.1), 0 2px 4px -2px hsl(20 14% 15% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(20 14% 15% / 0.1), 0 4px 6px -4px hsl(20 14% 15% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(20 14% 15% / 0.1), 0 8px 10px -6px hsl(20 14% 15% / 0.1);
+    --shadow-glow: 0 0 20px hsl(24 95% 53% / 0.3);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 20 14% 10%;
+    --foreground: 40 20% 95%;
+
+    --card: 20 14% 14%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 20 14% 14%;
+    --popover-foreground: 40 20% 95%;
+
+    --primary: 24 95% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 20 14% 20%;
+    --secondary-foreground: 40 20% 90%;
+
+    --muted: 20 14% 18%;
+    --muted-foreground: 40 10% 60%;
+
+    --accent: 142 70% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 20 14% 25%;
+    --input: 20 14% 25%;
+    --ring: 24 95% 55%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-size: 18px;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Noto Sans', sans-serif;
+  }
+
+  /* Large text mode for accessibility */
+  .text-accessible {
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+
+  /* Hindi/Devanagari text */
+  .font-hindi {
+    font-family: 'Tiro Devanagari Hindi', 'Noto Sans', serif;
+  }
+}
+
+@layer components {
+  /* Step indicator styles */
+  .step-indicator {
+    @apply flex items-center justify-center w-12 h-12 rounded-full text-lg font-bold transition-all duration-300;
+  }
+
+  .step-indicator-active {
+    @apply bg-primary text-primary-foreground shadow-lg;
+    box-shadow: var(--shadow-glow);
+  }
+
+  .step-indicator-complete {
+    @apply bg-accent text-accent-foreground;
+  }
+
+  .step-indicator-inactive {
+    @apply bg-muted text-muted-foreground;
+  }
+
+  /* Document preview card */
+  .document-preview {
+    @apply relative rounded-xl overflow-hidden border-2 border-dashed border-border transition-all duration-300;
+  }
+
+  .document-preview:hover {
+    @apply border-primary;
+  }
+
+  /* Confidence badge */
+  .confidence-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .confidence-high {
+    background: hsl(var(--confidence-high) / 0.15);
+    color: hsl(var(--confidence-high));
+  }
+
+  .confidence-medium {
+    background: hsl(var(--confidence-medium) / 0.15);
+    color: hsl(var(--confidence-medium));
+  }
+
+  .confidence-low {
+    background: hsl(var(--confidence-low) / 0.15);
+    color: hsl(var(--confidence-low));
+  }
+
+  /* Large button for accessibility */
+  .btn-large {
+    @apply px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300;
+  }
+
+  /* Card with gradient */
+  .card-gradient {
+    background: var(--gradient-card);
+  }
+
+  /* Hero gradient button */
+  .btn-hero {
+    background: var(--gradient-hero);
+    @apply text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02];
+  }
+
+  /* Animated border */
+  @keyframes border-pulse {
+    0%, 100% { border-color: hsl(var(--primary)); }
+    50% { border-color: hsl(var(--primary) / 0.5); }
+  }
+
+  .border-pulse {
+    animation: border-pulse 2s ease-in-out infinite;
+  }
+
+  /* Fade in animation */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+
+  /* Stagger children animation */
+  .stagger-children > * {
+    opacity: 0;
+    animation: fade-in-up 0.5s ease-out forwards;
+  }
+
+  .stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+  .stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+  .stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+  .stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+
+  /* Focus visible for accessibility */
+  .focus-visible-ring:focus-visible {
+    @apply outline-none ring-4 ring-primary/50 ring-offset-2;
+  }
+}
+
+@layer utilities {
+  /* Indian Ashoka Chakra pattern (decorative) */
+  .pattern-ashoka {
+    background-image: radial-gradient(circle at center, hsl(var(--primary) / 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/80 backdrop-blur-lg;
+  }
+
+  /* Text gradient */
+  .text-gradient {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
